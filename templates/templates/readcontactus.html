@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>read contact us </title>
+</head>
+<body>
+    <a href="{{url_for('users_dashboard')}}"><button>BACK</button></a>
+    {% if i %}
+    {% for i in i %}
+    <p>name: {{i[2]}}</p>
+    <p>email: {{i[3]}}</p>
+    <p>phone number: {{i[4]}}</p>
+    <p>message: {{i[5]}}</p>
+    <p>Date: {{i[6]}}</p>
+    {% endfor %}
+    {% else %}
+      <h5>NO queries</h5>
+    {% endif %}
+    
+</body>
+</html>

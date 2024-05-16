@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/dbda23c3af.js" crossorigin="anonymous"></script>
+</head>
+<!-- {% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %} -->
+      <!-- <center><b>{{ message }}</b></center> -->
+    <!-- {% endfor %}
+  {% endif %}
+{% endwith %} -->
+<style>       
+    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+     body{
+        
+            font-family: Arial, sans-serif;
+            background: linear-gradient(178.1deg, rgb(60, 55, 106) 8.5%, rgb(23, 20, 69) 82.4%);        
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            background-size: cover; 
+            }
+            
+
+    .form-container{
+        position: absolute;
+        top: 40%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width: 350px;    
+    }
+    .form-container h1{
+        font-family: "DM Serif Display", serif;
+        font-weight: 400;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: bold;
+        text-align: center;
+        margin:40px 0;
+        text-align: center;
+        background: -webkit-linear-gradient(#040404, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    ::placeholder{
+        color: rgb(81, 81, 86);
+        font-weight: bold;
+    }
+    input{
+        font-size: 16px;
+        padding: 10px 15px;
+        align-content: center;
+        width: 100%;
+        border: 0;
+        border-color: rgb(7, 7, 7);
+        border-radius: 5px;
+
+      
+    }
+   .form i{
+    color: #e5e0e0;
+   }
+    label{
+        /* margin: 15px 0; */
+        font-size: 20px;
+        color: #e5e0e0;
+        padding:0px 10px;
+        margin-bottom: 20px;
+    }
+    button{
+            width: 30%;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #ece9e9;
+            border: none ;
+            border-radius: 5px;
+            cursor: pointer;
+           
+    }
+    button:hover {
+            background-color: rgb(230, 27, 0);
+            scale:0.85;
+        }
+        button:active{
+            scale: 0.95;
+        }
+
+    .required::after{
+        content: '*';
+        color: red;
+    }
+</style>
+<body>
+    <div class="form-container">
+        <h1>REGISTRATION</h1>
+   
+        <!-- <div class="image">
+            <img src="" alt="" width="500vw " height="500vh" style="margin-left: 10%;">
+        </div> -->
+        <div class="form">
+            <form method="POST">
+                <i class="fa-regular fa-user"></i><label class="required"> Username: </label><br>
+                <center> <input type="text" name="username" placeholder="Username" required></center> <br>
+                <i class="fa-solid fa-envelope"></i><label class="required"> Email: </label><br>
+                <center><input type="email" name="email" placeholder="your@gmail.com" required> </center><br>
+                <i class="fa-solid fa-key"></i><label class="required"> Password: </label><br>
+                <center> <input type="password" name="password" placeholder="Atk@123" required> </center><br>
+                <center><button>Submit</button></center>
+            </form>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(89.7deg, rgb(0, 0, 0) -10.7%, rgb(53, 92, 125) 88.8%);
+      background-position: center center;
+       color: #fff; /* Set default text color to white */
+            height:auto;
+    }
+    /* --------------------------------- */
+    .navbar{
+            position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 5px 100px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* z-index: 100; */
+        }
+        .menu ul{
+            display: flex;
+        }
+        .menu ul li{
+            list-style: none;
+        }
+        .menu li a{
+            text-decoration: none;
+            color: whitesmoke;
+            border:black 5px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            margin: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 20%;
+        }
+        .logo span {
+            color: crimson;
+        }
+        .navbar .menu a{
+            font-size: 14px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            /* margin-left: 40px; */
+        
+        }
+        .navbar .logo a{
+            font-size: 24px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            /* margin-left: 40px; */
+        
+        }
+    /* --------------------------------- */
+    .jumbotron{
+      padding: 0;
+    }
+    .card {
+      background-color: #eee2e2;
+      /* margin-bottom: 20px; */
+      border-radius: 10px;
+      display: block;
+      margin: 30px auto;
+      width: 900px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .card-body img{
+      background-color: #0e0f0f;
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+    }
+   /* .navbar-brand{
+    margin-left: 5%;
+    color: rgb(247, 246, 246);
+    font-weight: 700;
+   } */
+    /* .navbar {
+      background-color: #a03838;
+      color: #ece6e6;
+      
+    } */
+    .nav-link {
+      color: #fbf4f4 !important;
+      cursor: pointer;
+    
+    }
+    .nav-link:hover {
+      color: #c86926 !important;
+    }
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height:200vh;
+      background-color: #0c0c0c;
+      color: #ffffff;
+      padding-top: 20px;
+    }
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+    .card {
+      background-color: rgba(0, 0, 0, 0.4);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+    .btn{
+      color: #efeaea;
+      background-color: #0e0f0f;
+    }
+    .toggle{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: none;
+            font-size:20px;
+            cursor: pointer;
+
+        }
+    @media(max-width:980px){
+      .menu li a{
+        display: none;
+      }
+      .toggle{
+                display: block;
+                bottom:20%;
+            }
+            .menu{
+                display: none;
+                width: 100%;
+            }
+            .navbar{
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu ul{
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(0, 0, 0,0.2);
+            }
+            .menu ul li {
+                text-align: center;
+                padding:10px 18px;
+            }
+            .menu ul li a{
+                padding:5px 10px;
+            }
+            .menu ul li a:hover{
+                color: #ffffff;
+                background-color: none;
+            }
+            
+            .menu.active{
+                display: flex;
+            }
+            .navbar .logo a{
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 20px;
+        
+        }
+       
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if session.get('user') == username %}
+    <div class="row justify-content-end">
+      {% endif %}
+    </div>
+<!-- <nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">PORTFOLIO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#projects">Projects</a>
+      </li>
+      Add more nav items as needed
+    </ul>
+  </div>
+</nav> -->
+<div class="navbar">
+  <div class="logo">
+    <a href="#"><span>P</span>ersonal <span>P</span>ortfolio</a>
+  </div>  
+   <div class="menu">  
+        <ul class="nav flex-start">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <!-- Add more sidebar items as needed -->
+          <li>
+          <a href="{{url_for('users_dashboard')}}"><button class="btn btn-secondary">BACK</button></a>
+        </li>
+          <i class="fas fa-bars toggle"></i>
+
+       </ul>
+   </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="col-md-3 sidebar">
+      <h5>{{ i[2] }}</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Projects</a>
+        </li>
+        <!-- Add more sidebar items as needed -->
+      </ul>
+    </div>
+    <div class="col-md-9 main-content">
+      <div id="about" class="card">
+        <div class="card-body">
+          <h2>ABOUT</h2>
+          <p><strong>Introduction:</strong> {{ i[1] }}</p>
+        <p><strong>Username:</strong> {{ i[2] }}</p>
+        <p><strong>Phone Number:</strong> {{ i[3] }}</p>
+        <p><strong>Email:</strong> {{ i[4] }}</p>
+        <p><strong>About:</strong> {{ i[5] }}</p>
+        <p><strong>Skills:</strong> {{ i[7] }}</p>
+        <p><strong>Languages:</strong> {{ i[8] }}</p>
+        <p><strong>Education:</strong> {{ i[9] }}</p>
+        </div>
+      </div>
+
+      <div id="projects" class="card">
+        <div class="card-body">
+          <h2>Projects</h2>
+        <img src="{{ url_for('static', filename=i[12]+'.jpg') }}"  class="card-img-top" alt="...">
+
+        <p><strong>Project Title:</strong> {{ i[10] }}</p>
+        <p><strong>Project Description:</strong> {{ i[11] }}</p>
+        <p><strong>Link:</strong> <p>{{ i[13] }}</p>
+        <p><strong>Resume:</strong> <a href="{{ url_for('view_resume', username=i[2]) }}" class="btn btn-primary mt-3">View Resume</a></p>
+        {% if session.get('user') == username %}
+        <a href="https://web.whatsapp.com/send?text=share the portfolio-{{url_for('design',name='design2',username=username,_external=True)}}"><button class="button">share the portfolio</button></a>
+        {% else %}
+        <button><a href="{{url_for('contact',name=username)}}">contact</a></button>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

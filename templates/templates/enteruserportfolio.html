@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter your portfolio data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<style>
+    /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+    grid-gap: 10px; /* Adjust the gap between images */
+    margin-top: 20px;
+}
+
+.image-gallery img {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+input[type="url"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="submit"],
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<body>
+    <a href="{{url_for('users_dashboard')}}"><button>BACK</button></a>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="introduction" placeholder="Enter introduction" required>
+        <input type="number" name="phnumber" placeholder="Enter phone number" required>
+        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="text" name="about" placeholder="Enter about of you" required>
+        <input type="text" name="profile" placeholder="Enter profile data" required>
+        <input type="text" name="skills" placeholder="Enter your skills" required>
+        <input type="text" name="languages" placeholder="Enter your languages" required>
+        <textarea name="education" placeholder="Enter your education details" required></textarea>
+        <input type="text" placeholder="Enter project name" name="project_title" required>
+        <label>Enter project description</label>
+        <textarea placeholder="Enter project description" name="project_description" required></textarea>
+        <label>Enter images of your project</label>
+        <input type="file" placeholder="Enter images of your project" name="image" required>
+        <input type="url" placeholder="Enter URL of your project i.e. GitHub link/live link" name="link" required>
+        <label>Upload Resume</label>
+        <input type="file" name="resume" required>
+        <button type="submit">Submit</button>
+    </form>
+    <h3>Select the template</h3>
+    <div class="image-gallery">
+        <a href="{{ url_for('design1',name='design1')}} "><img src="{{ url_for('static', filename='design1.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design2')}} "><img src="{{ url_for('static', filename='design2.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design3')}} "><img src="{{ url_for('static', filename='design3.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design4')}} "><img src="{{ url_for('static', filename='design4.PNG') }}" alt="Your Image"></a>
+    </div>
+    
+</body>
+</html>

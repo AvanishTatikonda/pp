@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+
+        /* Global styles */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif
+        }
+        body {
+            font-family: Arial, sans-serif;
+            /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUB3hj9e_dNcyzGygoPjhOtq1i8ylleDobZw&usqp=CAU'); Replace with your background image URL */
+            background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);;
+            background-position: center center;
+            color: #fff; /* Set default text color to white */
+            height:auto;
+             
+        }
+        /* ---------------------Header--------------------------- */
+        .navbar{
+            /* position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 5px 100px; */
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* z-index: 100; */
+        }
+        .menu ul{
+            display: flex;
+        }
+        .menu ul li{
+            list-style: none;
+        }
+        .menu li a{
+            text-decoration: none;
+            color: whitesmoke;
+            border:black 5px;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            margin: 14px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .logo span {
+            color: crimson;
+        }
+        .navbar .menu a{
+            font-size: 14px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            /* margin-left: 40px; */
+        
+        }
+        .navbar .logo a{
+            font-size: 24px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            /* margin-left: 40px; */
+        
+        }
+        .toggle{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: none;
+            font-size:20px;
+            cursor: pointer;
+
+        }
+        @media(max-width:768px){
+            .toggle{
+                display: block;
+                bottom:20%;
+            }
+            .menu{
+                display: none;
+                width: 100%;
+            }
+            .navbar{
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu ul{
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(0, 0, 0,0.2);
+            }
+            .menu ul li {
+                text-align: center;
+                padding:10px 18px;
+            }
+            .menu ul li a{
+                padding:5px 10px;
+            }
+            .menu ul li a:hover{
+                color: #ffffff;
+                background-color: none;
+            }
+            
+            .menu.active{
+                display: flex;
+            }
+            .navbar .logo a{
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 20px;
+        
+        }
+        }
+        /* ---------------------Header--------------------------- */
+
+        /* Custom styles */
+        .button {
+            background-color: none;
+    
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #d90000;
+            color: aliceblue;
+        }
+        
+       a{
+            text-decoration: none;
+        }
+        .list-group-item {
+            background-color:  rgba(0,0,0,0.5); /* Semi-transparent white background for post items */
+            border-color: whitesmoke;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+             /* Shadow effect for post items  */
+        }
+
+        .list-group-item h4 {
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: bold;
+            color:blue; /* Title color */
+            margin-bottom: 10px;
+        }
+
+        .list-group-item p {
+            margin-bottom: 10px;
+        }
+
+        .list-group-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .btn-primary{
+            transition: background-color 0.3s ease;
+            background: #deaa4a;
+            font-size: x-small;
+            border-radius: 20px;
+            border: black;
+          
+        }
+        .btn-primary:hover{
+           background-color:rgb(196, 114, 7); 
+           color: #fff;
+           scale: 0.95;
+        }
+        .btn-primary:active{
+            scale: 0.85;
+        }
+
+
+
+        .text-center {
+            text-align: center;
+            color:#deaa4a
+        }
+        
+        .container {
+        /* min-height: 100vh; */
+        width: 100%;
+        /* background-color: #d90000; */
+        max-width: 1500px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top:20%;
+        }
+        .mb-4{
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: bold;
+            text-align: center;
+        }
+        footer{
+            margin-bottom: 0%;        }
+       /* -------------------------------------------------------------------- */
+       @media(max-width:911px)
+       {
+        
+        .logo {
+            font-size: 22px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .navbar a{
+            font-size: 12px;
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+        .list-group-item h4 {
+            font-family: "DM Serif Display", serif;
+            font-weight: 300;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: bold;
+            color:blue; /* Title color */
+            margin-bottom: 10px;
+        }
+        /* .checkbtn{
+            font-size: 30px;
+            color: #fff;
+            float: right;
+            line-height: 80px;
+            margin-right: ;
+        } */
+
+       }
+       /* --------------------------- */
+    </style>
+</head>
+
+<body>
+    
+    <!-- <nav>
+        <div class="brand">
+            
+                <h2><span>P</span>ersonal <span>P</span>ortfolio</h2>
+    
+        </div>
+        <div class="nav-list">
+              
+                    <a href="{{url_for('uregistration')}}" class="button">CREATE PORTFOLIO</a></li>
+                    <a href="{{url_for('ulogin')}}" class="button">LOGIN</a>
+                    
+              
+        </div>
+    </nav> -->
+    <div class="navbar">
+       <div class="logo">
+         <a href="#"><span>P</span>ersonal <span>P</span>ortfolio</a>
+       </div>  
+       <i class="fas fa-bars toggle"></i>
+        <div class="menu">  
+            <ul>
+               <li>  <a href="{{url_for('uregistration')}}" class="button">CRERATE PORTFOLIO</a></li>
+                <li><a href="{{url_for('ulogin')}}" class="button">LOGIN</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4">All Posts</h1>
+                {% if data %}
+                <div class="list-group">
+                    {% for post in data %}
+                    <div class="list-group-item">
+                        <h4>{{ post[2] }}</h4>
+                        <p>{{ post[3] }}</p>
+                        <img src="{{ url_for('static', filename=post[4]+'.jpg') }}" class="img-fluid" alt="Post Image">
+                        <p>Created at: {{ post[5] }}</p>
+                        <a href="https://web.whatsapp.com/send?text=Share the recipe-{{url_for('viewmore',pid=post[0],_external=True)}}"
+                            class="btn btn-primary">Share the Recipe</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="a"> 
+
+                <p class="text-center">No posts available.</p>
+                {% endif %}
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+   <script>
+    let toogle=document.querySelector(".toggle")
+    let menu=document.querySelector(".menu")
+    toogle.onclick=function(){
+        menu.classList.toggle("active")
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/dbda23c3af.js" crossorigin="anonymous"></script>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<style>
+
+    .form-container{
+        display: flex;
+    }
+    .form{
+        border: 2px solid black;
+       margin:2% 10%;
+       padding-left: 5%;
+       padding-right: 10%;
+       padding-top: 2%;
+       margin-left: 200px;
+
+    }
+    input{
+        width: 300px;
+        padding: 2%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        box-shadow: 2px 1px;
+    }
+    label{
+        font-size: 20px;
+    }
+    button{
+        margin-bottom: 5%;
+        background-color: cadetblue;
+        border-radius: 30%;
+        padding: 1% 10%;
+    }
+    .required::after{
+        content: '*';
+        color: red;
+    }
+</style>
+<body>
+    <h1 align="center">Registration Form</h1>
+    <div class="form-container">
+        <div class="image">
+            <img src="https://thumbs.dreamstime.com/b/man-hold-registration-clipboard-checklist-man-hold-hand-clipboard-agreement-flat-design-man-hold-registration-clipboard-118426183.jpg" alt="nope" width="500vw " height="500vh" style="margin-left: 10%;">
+        </div>
+        <div class="form">
+            <form method="POST">
+                <i class="fa-regular fa-user"></i><label class="required"> Username: </label><br>
+            <input type="text" name="username" placeholder="Ram" required><br>
+            <i class="fa-solid fa-envelope"></i><label class="required"> Email: </label><br>
+            <input type="email" name="email" placeholder="ram@gmai.com" required><br>
+            <i class="fa-solid fa-key"></i><label class="required"> Password: </label><br>
+            <input type="password" name="password" placeholder="Ram@123" required><br>
+           
+            <center><button>Submit</button></center>
+        </form>
+            
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+    body {
+    font-family: Arial, sans-serif;
+    /* background-image: url('https://img.freepik.com/free-photo/overhead-view-four-yellow-cardboard-papers_23-2147878397.jpg'); */
+    background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);   background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    display: block;
+    align-items: center;
+     }
+
+.sidenav {
+    position:absolute;
+    left:42%;
+    height: 0;
+    width: 400px;
+   /* background: rgba(255,255,255,0.1); */
+    background-color:rgba(0,0,0,1);
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    /* overflow: hidden; */
+    transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   
+}
+
+.sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    display: block;
+    align-items: center;
+    
+}
+.sidenav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size:15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+.sidenav li{
+    padding: 0.7rem;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}
+
+.sidenav a:hover {
+    background-color: #e19d44;
+    color: #333;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    
+}
+.content h1{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   
+}
+h1 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.flash-message {
+    text-align: center;
+    background-color: #007bff;
+    color: #f3eded;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+/* ----------------------responsive------ */
+@media(max-width: 768px) {
+
+    .content {
+    margin-left: 20px;
+    /* padding: 20px; */
+    /* overflow: hidden; */
+    
+}
+.sidenav {
+    position:absolute;
+    left:20%;
+    right: auto;
+    /* right: 12rem;
+    top: 140px; */
+    height: 0;
+    width: 400px;
+   /* background: rgba(255,255,255,0.1); */
+    /* background-color:rgba(0,0,0,1); */
+    backdrop-filter: blur(30px);
+    border-radius: 10px;
+    /* overflow: hidden; */
+    transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   
+}
+}
+@media(max-width: 482px){
+    .sidenav {
+    /* position:absolute; */
+    left:auto;
+    right: auto;
+
+}
+.content{
+    font-size: 10px;
+}
+}
+/* ----------------------responsive------ */
+    </style>
+</head>
+<body>
+    <!-- <div class="sidenav">
+        <a href="{{url_for('submit_form')}}">Create Portfolio</a>
+        <a href="{{url_for('createpost')}}">Create Post</a>
+        <a href="{{url_for('view_portfolio')}}">View Portfolio</a>
+        <a href="{{url_for('viewposts')}}">View Created Posts</a>
+        <a href="{{url_for('read_contact')}}">Read queries</a>
+        <a href="{{url_for('ulogout')}}">Logout</a>
+    </div> -->
+
+    <div class="content">
+        
+          <center>  <h1>USER DASHBOARD</h1></center>
+       
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Your content goes here -->
+        <!-- Example image -->
+        <!-- <img src="https://media.istockphoto.com/id/496686760/photo/office-laptop.webp?b=1&s=170667a&w=0&k=20&c=QJ0lXd1FX451A1-ZOpKemebQ5pYFlweWl9OkLU-ZqWU=" alt="Image" width="200"> -->
+    </div>
+    <div class="sidenav">
+       <center> <ul>
+            <li><a href="{{url_for('submit_form')}}">Create Portfolio</a></li>
+            <li><a href="{{url_for('createpost')}}">Create Post</a></li>
+            <li><a href="{{url_for('view_portfolio')}}">View Portfolio</a></li>
+            <li><a href="{{url_for('viewposts')}}">View Created Posts</a></li>
+            <li><a href="{{url_for('read_contact')}}">Read queries</a></li>
+            <li><a href="{{url_for('ulogout')}}">Logout</a></li>
+        </ul></center>
+    </div>
+
+</body>
+</html>

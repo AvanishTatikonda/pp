@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Hf1xgA19t3CHtqA2sBLZ9cQUmzTjt83LwbaUwfz2Z2gFu-0WwhO6Ls4_b-3gBo-cr50&usqp=CAU'); /* Replace with your background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #fff; /* Set default text color to white */
+        }
+
+        /* Custom styles */
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+            color: aliceblue;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for better readability */
+            border-radius: 10px;
+        }
+
+        .list-group-item {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for post items */
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect for post items */
+        }
+
+        .list-group-item h4 {
+            color: #007bff; /* Title color */
+            margin-bottom: 10px;
+        }
+
+        .list-group-item p {
+            margin-bottom: 10px;
+        }
+
+        .list-group-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{{url_for('uregistration')}}" class="button">Create Portfolio</a>
+    <a href="{{url_for('ulogin')}}" class="button">Login</a>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4">All Posts</h1>
+                {% if data %}
+                <div class="list-group">
+                    {% for post in data %}
+                    <div class="list-group-item">
+                        <h4>{{ post[2] }}</h4>
+                        <p>{{ post[3] }}</p>
+                        <img src="{{ url_for('static', filename=post[4]) }}" class="img-fluid" alt="Post Image">
+                        <p>Created at: {{ post[5] }}</p>
+                        <a href="https://web.whatsapp.com/send?text=Share the recipe-{{url_for('viewmore',pid=post[0],_external=True)}}"
+                            class="btn btn-primary">Share the Recipe</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center">No posts available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

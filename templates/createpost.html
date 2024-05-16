@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+
+        body {
+            /* background-image: url('https://images.unsplash.com/photo-1487088678257-3a541e6e3922?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+            background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);     
+            background-size: cover;
+            background-repeat: no repeat;
+            background-position: 50% 30%;
+            height: 100vh;
+            overflow: hidden;
+            /* background-color: #0d0e0f; */
+        }
+
+        .card { 
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(43, 87, 113, 0.1);
+            margin: 50px auto;
+            border-radius: 10px;
+            /* background-color: rgb(229, 229, 184);  */
+            background-color: rgba(0, 0, 0, 0.2);
+            margin-top: 0;
+            margin-left: 5%;
+            size: 1000%;
+            border-color: whitesmoke;
+        }
+
+        .card-header {
+            color: rgb(226, 225, 224);
+            border-radius: 15px 15px 0 0;
+            font-weight: bold;
+            font-size: larger;
+        }
+        h2{
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: bold;
+            color:white;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #080809;
+            padding: 20px;
+            /* color: antiquewhite; */
+            background-color: rgb(226, 233, 232);
+        }
+
+        .form-control:focus {
+            border-color: #0d0e0f;
+            box-shadow: none;
+           /* background-color: rgb(71, 91, 108); */
+           
+        }
+        .form-control-file{
+            font-size: small;
+        }
+
+        .btn-primary {
+            background-color: #777b7f;
+            border-color: #007bff;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-primary {
+        border: none;
+        padding: 5px 10px;
+        outline: none;
+        cursor: pointer;
+        font-weight: 600;
+        margin: 20px;
+        background-color: #31304d;
+        color: #f0ece5;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        }
+        .btn-primary i {
+        padding: 0 5px;
+        }
+        .btn-primary:hover {
+            background-color: rgb(60, 118, 218);
+            border-color: 1px whitesmoke;
+            scale:0.85;
+        }
+        .btn-primary:active{
+            scale:0.95;
+        }
+      .form-group{
+        text-align:start;
+        color: rgb(234, 224, 224);
+        font-weight: bolder;
+        font-size: larger;
+      }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <!-- <div class="card-header"> -->
+
+        <a href="{{ url_for('users_dashboard') }}"><button class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>BACK</button></a>
+       
+    <!-- </div> -->
+    <center><h2>CREATE POST</h1></center>
+    <!-- <a href="{{ url_for('users_dashboard') }}"><button class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i>BACK</button></a> -->
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <section class="card">
+                    <div class="card-body">
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="image">Image :</label>
+                             <input type="file" class="form-control-file" id="image" name="image" accept="image/jpeg">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label for="caption">Caption :</label>
+                                <input type="text" class="form-control" id="caption" name="caption" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="descp">Description :</label>
+                                <textarea class="form-control" id="descp" name="descp" rows="4" required></textarea>
+                            </div>
+                           <center> <button type="submit" class="btn btn-primary">Create Post</button></center>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+    src="https://kit.fontawesome.com/8e56515553.js"
+    crossorigin="anonymous"></script>
+</body>
+</html>

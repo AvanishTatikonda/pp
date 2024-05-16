@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<style>
+    /* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
+    width: 100%;
+    height: 200vh;
+    overflow-x: hidden;
+}
+
+/* Navigation styles */
+.navbar {
+    background-color: rgba(0,0,0,0.5) !important; /* Set navbar background color */
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    color: #fff !important; /* Set navbar link color */
+    font-weight: bold;
+    margin-right: 20px; /* Adjust spacing between navbar links */
+}
+
+/* About section styles */
+#about {
+    padding: 50px 0;
+}
+
+/* Projects section styles */
+#projects  {
+    padding: 50px 0;
+    background: linear-gradient(to top, #09203f 0%, #537895 100%);
+    display: flex;
+    justify-content: center;
+   
+}
+h3{
+    color: whitesmoke;
+}
+.card-title {
+    color: #007bff; /* Set project title color */
+}
+
+.card-text {
+    color:black; /* Set project description color */
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.nav-link{
+    font-weight: 400px;
+}
+.container h2{
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: bold;
+}
+/* Contact section styles */
+#contact {
+    padding: 50px 0;
+    color: #fff;
+    /* background-color: #f8f9fa; Set contact section background color */
+}
+.h5{
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #007bff !important; /* Set primary button background color */
+    border-color: #007bff !important; /* Set primary button border color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3 !important; /* Set primary button hover background color */
+    border-color: #0056b3 !important; /* Set primary button hover border color */
+}
+
+/* Footer styles */
+footer  {
+    
+    background-color: #e2cdcd; /* Dark background color */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    padding:1px 10px;   
+    position: fixed; /* Fixed position at the bottom */
+    left: 0; /* Align to the left */
+    bottom: 0; /* Align to the bottom */
+    width: 100%;
+    height: 0px;
+
+}
+.col-md-6{
+    color: whitesmoke;
+}
+h3{
+    color:#f0ece5;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.back i {
+  padding: 0 5px;
+}
+.mb-3{
+    display: flex;
+    justify-content: space-between;
+}
+
+</style>
+<body>
+   <a href="{{url_for('users_dashboard')}}"><button class="back"><i class="fa-solid fa-arrow-left"></i>BACK</button></a>
+   <!-- <h5>This is a default template, if you want another template please go end of this page  then select the template </h5> -->
+    {% if data %}
+    <!--  -->
+<!-- <a href="{{url_for('deleteportfolio')}}"><button style="background-color: red;">delete my  portfolio </button></a>
+<a href="{{url_for('update_portfolio')}}"><button style="background-color: rgb(0, 166, 255);">update portfolio</button></a> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">{{ data[2] }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('deleteportfolio')}}"class="nav-link">Delete my portfolio</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('update_portfolio')}}"class="nav-link">Update portfolio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>About Me</h2>
+                    <h6><strong>Introduction:</strong><p>{{ data[1] }}</p>
+                    <h6><strong>Profile:</strong><p>{{ data[6] }}</p>
+                    <h6><strong>About:</strong> <p>{{ data[5] }}</p>
+                    <h6><strong>Languages:</strong> <p>{{ data[8] }}</p>
+                    <h6><strong>Education:</strong> <p>{{ data[9] }}</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">PROJECTS</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ data[10] }}</h3>
+                            <p class="card-text">{{ data[11] }}</p>
+                            
+                            <img src="{{ url_for('static', filename=data[12]) }}"  class="card-img-top" alt="...">
+                            <a href="{{ url_for('view_resume', username=data[2]) }}" class="btn btn-primary mt-3">View Resume</a>
+                            <p>project link</p>
+                            <a href="">{{ data[13] }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <!-- <a href="{{ url_for('view_resume', username=data[2]) }}" class="btn btn-primary mt-3">View Resume</a> -->
+            <h2 class="text-center mb-5">Contact Me</h2>
+            <p class="text-center">You can contact me at {{ data[3] }}</p>
+            <p class="text-center">email:  {{ data[4] }}</p>
+        </div>
+    </section>
+   
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 My Portfolio</p>
+        </div>
+    </footer>
+
+    <h3>Select the template</h3>
+    <div class="image-gallery row">
+        <div class="col-md-6 mb-3">
+            <a href="{{ url_for('design1',name='design1')}} "><img src="{{ url_for('static', filename='design1.PNG') }}" alt="Your Image"></a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a href="{{ url_for('design1',name='design2')}} "><img src="{{ url_for('static', filename='design2.PNG') }}" alt="Your Image"></a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a href="{{ url_for('design1',name='design3')}} "><img src="{{ url_for('static', filename='design3.PNG') }}" alt="Your Image"></a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a href="{{ url_for('design1',name='design4')}} "><img src="{{ url_for('static', filename='design4.PNG') }}" alt="Your Image"></a>
+        </div>
+    </div>
+    {% else %}
+    <h4>create the portfolio <a href="{{url_for('submit_form')}}">click here </a></h4>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script
+    src="https://kit.fontawesome.com/8e56515553.js"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

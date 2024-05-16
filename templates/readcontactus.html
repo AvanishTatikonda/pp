@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>read contact us </title>
+</head>
+<style>
+  .back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.back i {
+  padding: 0 5px;
+}
+</style>
+<body>
+    <a href="{{url_for('users_dashboard')}}"><button class="back"><i class="fa-solid fa-arrow-left"></i>BACK</button></a>
+  <center>  {% if i %}
+    {% for i in i %}
+    <p>name: {{i[2]}}</p>
+    <p>email: {{i[3]}}</p>
+    <p>phone number: {{i[4]}}</p>
+    <p>message: {{i[5]}}</p>
+    <p>Date: {{i[6]}}</p>
+    {% endfor %}
+    {% else %}
+      <h3>NO queries</h5>
+    {% endif %}</center>
+    <script
+    src="https://kit.fontawesome.com/8e56515553.js"
+    crossorigin="anonymous"></script>
+</body>
+</html>

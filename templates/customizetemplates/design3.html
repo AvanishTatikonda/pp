@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    body {
+      /* background: linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%); */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(89.7deg, rgb(0, 0, 0) -10.7%, rgb(53, 92, 125) 88.8%);
+      color: #333333;
+      line-height: 1.6;
+    }
+    .jumbotron{
+      padding: 0;
+    }
+    .card {
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      display: block;
+      margin: 10px auto;
+      width: 500px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card-body img{
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+    }
+   
+    header {
+      background-color: #131314;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #983c3c;
+      padding: 10px;
+    }
+    nav a {
+      color: #080808;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffc107;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      padding: 2%;
+      background-color: rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+    footer {
+      background-color: #0e0f0f;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    button{
+      background-color: #0e0f0f;
+      color: #ffffff;
+    }
+    @media (max-width:1024px) {
+    .card-body img{
+      width: 300px;
+    }
+    .card {
+      width: 100%;
+    }
+  }
+  </style>
+</head>
+<body>
+  {% if session.get('user') == username %}
+  <a href="{{url_for('users_dashboard')}}"><button>BACK</button></a>
+  {% endif %}
+  <header>
+    <h1>{{ i[2]}}</h1>
+    <p>Welcome to  {{ i[2] }} portfolio website</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <!-- Add more nav items as needed -->
+  </nav>
+
+  <div class="container">
+    <section id="about" class="card">
+      <div class="card-body">
+        <h2>About Me</h2>
+        <p><strong>Introduction:</strong> {{ i[1] }}</p>
+        <p><strong>Username:</strong> {{ i[2] }}</p>
+        <p><strong>Phone Number:</strong> {{ i[3] }}</p>
+        <p><strong>Email:</strong> {{ i[4] }}</p>
+        <p><strong>About:</strong> {{ i[5] }}</p>
+        <p><strong>Skills:</strong> {{ i[7] }}</p>
+        <p><strong>Languages:</strong> {{ i[8] }}</p>
+        <p><strong>Education:</strong> {{ i[9] }}</p>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <div class="card-body">
+        <h2>Projects</h2>
+        <img src="{{ url_for('static', filename=i[12]+'.jpg') }}"  class="card-img-top" alt="...">
+
+        <p><strong>Project Title:</strong> {{ i[10] }}</p>
+        <p><strong>Project Description:</strong> {{ i[11] }}</p>
+        <p><strong>Link:</strong> <p>{{ i[13] }}</p>
+        <p><strong>Resume:</strong> <a href="{{ url_for('view_resume', username=i[2]) }}" class="btn btn-primary mt-3">View Resume</a></p>
+        {% if session.get('user') == username %}
+        <a href="https://web.whatsapp.com/send?text=share the portfolio-{{url_for('design',name='design3',username=username,_external=True)}}"><button class="button">share the portfolio</button></a>
+        {% else %}
+        <button><a href="{{url_for('contact',name=username)}}">contact</a></button>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Your Name. All rights reserved.</p>
+  </footer>
+</body>
+</html>

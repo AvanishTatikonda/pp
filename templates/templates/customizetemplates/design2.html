@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: #343a40;
+      color: #ffffff;
+    }
+    .nav-link {
+      color: #ffffff !important;
+    }
+    .nav-link:hover {
+      color: #ffc107 !important;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #343a40;
+      color: #ffffff;
+      padding-top: 20px;
+    }
+    .main-content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% if session.get('user') == username %}
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <a href="{{url_for('users_dashboard')}}"><button class="btn btn-secondary">BACK</button></a>
+      </div>
+      {% endif %}
+    </div>
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">Portfolio</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#projects">Projects</a>
+      </li>
+      <!-- Add more nav items as needed -->
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <h5>{{ i[2] }}</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Projects</a>
+        </li>
+        <!-- Add more sidebar items as needed -->
+      </ul>
+    </div>
+    <div class="col-md-9 main-content">
+      <div id="about" class="card">
+        <div class="card-body">
+          <h2>About</h2>
+          <p><strong>Introduction:</strong> {{ i[1] }}</p>
+        <p><strong>Username:</strong> {{ i[2] }}</p>
+        <p><strong>Phone Number:</strong> {{ i[3] }}</p>
+        <p><strong>Email:</strong> {{ i[4] }}</p>
+        <p><strong>About:</strong> {{ i[5] }}</p>
+        <p><strong>Skills:</strong> {{ i[7] }}</p>
+        <p><strong>Languages:</strong> {{ i[8] }}</p>
+        <p><strong>Education:</strong> {{ i[9] }}</p>
+        </div>
+      </div>
+
+      <div id="projects" class="card">
+        <div class="card-body">
+          <h2>Projects</h2>
+        <img src="{{ url_for('static', filename=i[12]+'.jpg') }}"  class="card-img-top" alt="...">
+
+        <p><strong>Project Title:</strong> {{ i[10] }}</p>
+        <p><strong>Project Description:</strong> {{ i[11] }}</p>
+        <p><strong>Link:</strong> <p>{{ i[13] }}</p>
+        <p><strong>Resume:</strong> <a href="{{ url_for('view_resume', username=i[2]) }}" class="btn btn-primary mt-3">View Resume</a></p>
+        {% if session.get('user') == username %}
+        <a href="https://web.whatsapp.com/send?text=share the portfolio-{{url_for('design',name='design2',username=username,_external=True)}}"><button class="button">share the portfolio</button></a>
+        {% else %}
+        <button><a href="{{url_for('contact',name=username)}}">contact</a></button>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter your portfolio data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+
+body {
+
+            background: linear-gradient(109.6deg, rgb(36, 45, 57) 11.2%, rgb(16, 37, 60) 51.2%, rgb(0, 0, 0) 98.6%);;
+            font-family: Arial, sans-serif;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            /* height: 100vh; */
+            background-size:cover   ;
+            background-repeat: no-repeat;
+            /* background-position: 50% 30%; */
+            background-position: cover;
+            overflow-x: hidden;
+            width: auto;
+}
+
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color:rgba(0,0,0,0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(3, 2, 2, 0.1);
+    color: white;
+    border: 1px solid whitesmoke;
+    margin-top: 1%;
+}
+.image-gallery {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: row;
+    gap: 60px;
+    padding: 0 33px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-gallery img {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+input[type="url"],
+input[type="file"] {
+    width: 100%;
+    padding:20px;
+    margin-bottom: 15px;
+    border: 1px solid #151414;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: rgb(124, 115, 115)  ;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="submit"],
+/* .butt {
+    width: 2%;
+    padding: 0px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: -4%;
+} */
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #007bff  ;
+}
+.but{
+   color:rgba(0,0,0,0.3);
+   padding: 0.3rem 1rem;
+   border-radius: 20px;
+   font-size: 0.8rem;
+   font-weight: bold;
+   cursor: pointer;
+   border: none;
+   outline: none;
+   text-align: center;
+   transition: scale 0.2 ease;
+  }
+  .btn:active{
+   scale:0.95;
+  }
+  .btn:hover{
+   color: #fff;
+   scale: 0.85;
+  }
+  .btn{
+    background-color:rgb(79, 17, 236);
+    border:whitesmoke;
+    color: #fff;
+    text-align: center; 
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+::placeholder{
+    color: rgb(11, 1, 1);
+}
+h1{
+    font-family: "DM Serif Display", serif;
+    font-weight: 300;
+    font-size: 50px;
+    color: white;
+    margin-right: 35%;
+}
+h3{
+    color: #f0ece5;
+    
+}
+.back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.back i {
+  padding: 0 5px;
+}
+.nav{
+    display: flex;
+    justify-content:space-between;
+}
+/* .image-gallery{
+    background-color: rgb(251, 20, 20);
+} */
+@media (max-width:1024px) {
+.image-gallery {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+
+}
+h1{
+    font-size: 30px;
+}
+}
+</style>
+<!-- <h1>CREATE PORTFOLIO</h1> -->
+<body>
+    <div class="nav">
+        <div class="butt">
+            <a href="{{url_for('users_dashboard')}}"><button class="back"><i class="fa-solid fa-arrow-left"></i>BACK</button></a>
+        </div>
+        <h1>CREATE PORTFOLIO</h1>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="introduction" placeholder="Enter introduction" required>
+        <input type="number" name="phnumber" placeholder="Enter phone number" required>
+        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="text" name="about" placeholder="Enter about of you" required>
+        <input type="text" name="profile" placeholder="Enter profile data" required>
+        <input type="text" name="skills" placeholder="Enter your skills" required>
+        <input type="text" name="languages" placeholder="Enter your languages" required>
+        <textarea name="education" placeholder="Enter your education details" required></textarea>
+        <input type="text" placeholder="Enter project name" name="project_title" required>
+        <label>Enter project description</label>
+        <textarea placeholder="Enter project description" name="project_description" required></textarea>
+        <label>Enter images of your project</label>
+        <input type="file" placeholder="Enter images of your project" name="image" required>
+        <input type="url" placeholder="Enter URL of your project i.e. GitHub link/live link" name="link" required>
+        <label for="resume">Upload Resume</label>
+        <input type="file" name="resume" required>
+        <div class="but">
+        <button class="btn" type="submit">Submit</button>
+        </div>
+    </form>
+    <h3>Select the template</h3>
+    <div class="image-gallery">
+        <a href="{{ url_for('design1',name='design1')}} "><img src="{{ url_for('static', filename='design1.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design2')}} "><img src="{{ url_for('static', filename='design2.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design3')}} "><img src="{{ url_for('static', filename='design3.PNG') }}" alt="Your Image"></a>
+        <a href="{{ url_for('design1',name='design4')}} "><img src="{{ url_for('static', filename='design4.PNG') }}" alt="Your Image"></a>
+    </div>
+    <script
+    src="https://kit.fontawesome.com/8e56515553.js"
+    crossorigin="anonymous"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posts</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Big+Shoulders+Stencil+Text:wght@100..900&family=Chathura:wght@100;300;400&family=Cormorant+SC:wght@300;400;500;600;700&family=DM+Serif+Display&family=Marvel:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu&family=Varela+Round&display=swap');
+
+        body {
+            
+            font-family: Arial, sans-serif;
+            background: linear-gradient(177.9deg, rgb(58, 62, 88) 105.8%, rgb(119, 127, 148)  3.6%);
+        }
+
+        .container {
+            padding-top: 0px;
+        }
+        .mb-4
+        {
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            color: aliceblue;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: bold;
+        }
+        .back {
+        border: none;
+        padding: 5px 10px;
+        outline: none;
+        cursor: pointer;
+        font-weight: 600;
+        margin: 20px;
+        background-color: #31304d;
+        color: #f0ece5;
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        }
+        .back i {
+        padding: 0 5px;
+        }
+        .list-group-item {
+            background-color:rgba(0, 0, 0, 0.7); /* Set background color for each post */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            padding: 20px;
+        }
+
+        .list-group-item h4 {
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            font-size: 50px;
+            font-style: normal;
+            font-weight: bold;
+            color: #d9d0e5 /* Set title color */
+        }
+
+        .list-group-item p {
+            margin-bottom: 15px;
+            color: #ffffff; /* Set text color */
+        }
+
+        .list-group-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .list-group-item a {
+            color: #dc3545; /* Set delete link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .list-group-item a:hover {
+            color: #c82333; /* Change color on hover */
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<body>
+    <a href="{{ url_for('users_dashboard') }}"><button class="back"><i class="fa-solid fa-arrow-left"></i>BACK</button></a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4">All Posts</h1>
+                {% if data %}
+                <div class="list-group">
+                  
+                    {% for post in data %}
+                    <div class="list-group-item">
+                        <h4>{{ post[2] }}</h4>
+                        <p>{{ post[3] }}</p>
+                        <img src="{{ url_for('static', filename=post[4]+'.jpg') }}" class="img-fluid" alt="Post Image">
+                        <p>Created at: {{ post[5] }}</p>
+                        <a href="{{ url_for('deletepost', pid=post[0]) }}">Delete Post</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center">No posts available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+    src="https://kit.fontawesome.com/8e56515553.js"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
